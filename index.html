@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой счетчик</title>
+</head>
+<body>
+<h1>Счетчик: <span id="counter">0</span></h1>
+
+<script>
+    // Функция для обновления счетчика на странице
+    function updateCounter() {
+        fetch('/counter')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('counter').textContent = data;
+            })
+            .catch(error => {
+                console.error('Ошибка при получении данных счетчика:', error);
+            });
+    }
+
+    // Обновляем счетчик при загрузке страницы
+    updateCounter();
+</script>
+</body>
+</html>
